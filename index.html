@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WeatherApp</title>
+    <link rel="stylesheet" href="src/output.css" />
+  </head>
+  <body class="px-[20px] py-[30px]">
+    <main class="h-[100%] w-[100%]">
+      <header
+        class="flex justify-between items-center flex-col md:flex-row *:w-[100%] *:md:w-[50%]"
+      >
+        <!-- location part -->
+        <div
+          class="flex justify-between md:justify-start items-center gap-[50px]"
+        >
+          <h1 class="">WeatherApp</h1>
+          <div class="location flex justify-center items-center">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24px"
+              height="24px"
+              fill="white"
+              stoke="white"
+              class="bi bi-geo-alt"
+              viewBox="0 0 16 16"
+            >
+              <path
+                d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A32 32 0 0 1 8 14.58a32 32 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10"
+              />
+              <path
+                d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4m0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6"
+              />
+            </svg>
+            <span id="locEl"></span>
+          </div>
+        </div>
+        <!-- input part -->
+        <div class="flex justify-end items-center">
+          <input
+            id="loc"
+            class="w-[calc(100%-50px)] md:w-[400px] h-[45px] text-white bg-[#2B2A46] rounded-[12px_0px_0px_12px] px-[10px] border-none outline-none"
+            type="text"
+            placeholder="Search area here"
+          />
+          <button
+            id="search"
+            class="cursor-pointer bg-[white] h-[45px] w-[50px] flex justify-center items-center rounded-[0px_12px_12px_0]"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="white"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="black"
+              class="size-6"
+              wight="24px"
+              height="24px"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"
+              />
+            </svg>
+          </button>
+        </div>
+      </header>
+      <!-- line two -->
+      <section class="flex flex-wrap mt-[50px]">
+        <!-- firt part -->
+        <div
+          class="w-[70%] h-auto md:w-[300px] md:h-[200px] flex flex-col justify-start items-start"
+        >
+          <h1>Weather Forecast</h1>
+          <span id="dateEl" class="text-[16px] mt-[10px]"></span>
+          <span id="temp" class="text-[36px] md:text-[64px]"></span>
+          <span id="feelsLike" class="text-[16px]"></span>
+        </div>
+        <!-- second part -->
+        <div
+          id="WeatherIcon"
+          class="w-[30%] h-auto md:w-[200px] md:h-[200px] md:ml-auto"
+        ></div>
+        <!-- third part -->
+        <div
+          class="w-[200px] h-[200px] flex justify-start items-start flex-col"
+        >
+          <span id="WeatherStatusEl" class="mt-[20px] md:mt-[0px] md:mb-[20px]">
+          </span>
+          <span
+            id="precipEl"
+            class="text-[16px] flex justify-start items-center"
+          ></span>
+          <span
+            class="flex justify-start items-start my-[5px]"
+            id="humidityEl"
+          ></span>
+          <span
+            class="flex justify-start items-start md:my-[5px]"
+            id="windEl"
+          ></span>
+        </div>
+      </section>
+
+      <!-- day forecast -->
+      <section class="mt-[50px]">
+        <h1 id="dayForcastEl"></h1>
+        <div
+          class="mt-2.5 custom-scroll w-[100%] h-[200px] flex items-center overflow-x-scroll overflow-y-hidden bg-[#2B2A46] rounded-[16px_16px_0px_0px] *:rounded-[16px] *:h-[180px] *:w-[100px] *:md:w-[150px] *:shrink-0"
+        >
+          <div class="forecastBox">
+            <span>0AM</span>
+            <span class="forecastTempIcon w-[50px] my-[15px]"></span>
+            <span class="forecastTemp"></span>
+          </div>
+          <div class="forecastBox">
+            <span>2AM</span>
+            <span class="forecastTempIcon w-[50px] my-[15px]"></span>
+            <span class="forecastTemp"></span>
+          </div>
+          <div class="forecastBox">
+            <span>4AM</span>
+            <span class="forecastTempIcon w-[50px] my-[15px]"></span>
+            <span class="forecastTemp"></span>
+          </div>
+          <div class="forecastBox">
+            <span>6AM</span>
+            <span class="forecastTempIcon w-[50px] my-[15px]"></span>
+            <span class="forecastTemp"></span>
+          </div>
+          <div class="forecastBox">
+            <span>8AM</span>
+            <span class="forecastTempIcon w-[50px] my-[15px]"></span>
+            <span class="forecastTemp"></span>
+          </div>
+          <div class="forecastBox">
+            <span>10AM</span>
+            <span class="forecastTempIcon w-[50px] my-[15px]"></span>
+            <span class="forecastTemp"></span>
+          </div>
+          <div class="forecastBox">
+            <span>0PM</span>
+            <span class="forecastTempIcon w-[50px] my-[15px]"></span>
+            <span class="forecastTemp"></span>
+          </div>
+          <div class="forecastBox">
+            <span>2PM</span>
+            <span class="forecastTempIcon w-[50px] my-[15px]"></span>
+            <span class="forecastTemp"></span>
+          </div>
+          <div class="forecastBox">
+            <span>4PM</span>
+            <span class="forecastTempIcon w-[50px] my-[15px]"></span>
+            <span class="forecastTemp"></span>
+          </div>
+          <div class="forecastBox">
+            <span>6PM</span>
+            <span class="forecastTempIcon w-[50px] my-[15px]"></span>
+            <span class="forecastTemp"></span>
+          </div>
+          <div class="forecastBox">
+            <span>8PM</span>
+            <span class="forecastTempIcon w-[50px] my-[15px]"></span>
+            <span class="forecastTemp"></span>
+          </div>
+          <div class="forecastBox">
+            <span>10PM</span>
+            <span class="forecastTempIcon w-[50px] my-[15px]"></span>
+            <span class="forecastTemp"></span>
+          </div>
+        </div>
+      </section>
+      <!-- weekly forecast -->
+      <!-- <section class="mt-[50px]">
+        <h1>weekly Forecast</h1>
+        <div
+        class="custom-scroll overflow-x-auto  h-[200px] flex items-center justify-start  rounded-[16px_16px_0px_0px] *:bg-[#37385E] *:rounded-[16px] *:h-[180px] *:w-[100px] *:md:w-[150px] *:shrink-0 *:mx-[3px]"
+      >
+        <div class="weeklyForecastEl active flex flex-col items-center" data-day="0">
+          <span class="text-[20px] mt-[2px]">2025/07/23</span>
+          <span> <span>32°</span> </span>
+        </div>
+        <div class="weeklyForecastEl" data-day="1"></div>
+        <div class="weeklyForecastEl" data-day="2"></div>
+        <div class="weeklyForecastEl" data-day="3"></div>
+        <div class="weeklyForecastEl" data-day="4"></div>
+        <div class="weeklyForecastEl" data-day="5"></div>
+        <div class="weeklyForecastEl" data-day="6"></div>
+      </div>
+      </section> -->
+    </main>
+    <!-- svg test -->
+    <!-- loading -->
+    <div id="loading-animation"></div>
+  </body>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.9.6/lottie.min.js"></script>
+  <script src="src/svg.js"></script>
+  <script src="src/functions.js"></script>
+  <script src="src/script.js"></script>
+</html>
